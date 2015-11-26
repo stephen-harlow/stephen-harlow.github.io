@@ -19,8 +19,24 @@
  
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-</head>
-<body>
+    <script type="text/javascript">
+            function updateTextColour(value) {
+                document.body.style.backgroundColor = '#' + value;
+                $("#canvas").css("background-color",'#' + value);
+            }
+        </script>
+    </head>
+    <body>
+        <form>Change the background color:
+            <select name="backGround" size="1" onChange="updateTextColour(this.value)">
+                <option value="000000">[Black]</option>
+                <option value="FF0400">[Red]</option>
+                <option value="EFE800">[Yellow]</option>
+                <option value="05EF00">[Green]</option>
+                <option value="0206FF">[Blue]</option>
+                <option value="FFFFFF" selected>[White]</option>
+            </select>
+        </form>
  
 <p>
 </p>
@@ -37,10 +53,14 @@ var ctx = $('#canvas')[0].getContext("2d");
  
 //draw a circle
 ctx.beginPath();
+ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
 ctx.arc(event.clientX, event.clientY, 10, 0, Math.PI*2, true); 
 ctx.closePath();
 ctx.fill();
+
 });
+    // utility function -- generate a random color
+
 </script>
  
 </body>
