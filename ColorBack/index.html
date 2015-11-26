@@ -27,11 +27,20 @@ body{
                 document.body.style.backgroundColor =  value.substr(0,7);
                 $("#canvas").css("background-color", value.substr(0,7));
             }
+    $(document).keydown(function(){
+        $("#DRAW").text("NO");
+       
+    });
+      $(document).keyup(function(){
+    
+        $("#DRAW").text("YES");
+    });
             //
         </script>
     
     </head>
     <body>
+        <p id = "DRAW">YES</p>
         <form>
             <select name="backGround" size="1" onChange="updateTextColour(this.value)">
                 <option value=#000000 selected>Black</option>
@@ -765,10 +774,11 @@ ctx.beginPath();
     else{
         ctx.fillStyle = str;   
     }
-ctx.arc(event.clientX-8, event.clientY-70, $('#Size').val(), 0, Math.PI*2, true); 
-ctx.closePath();
-ctx.fill();
-
+    if($("#DRAW").html() == "YES"){
+        ctx.arc(event.clientX-8, event.clientY-70, $('#Size').val(), 0, Math.PI*2, true); 
+        ctx.closePath();
+        ctx.fill();
+    }
 });
     // utility function -- generate a random color
 
