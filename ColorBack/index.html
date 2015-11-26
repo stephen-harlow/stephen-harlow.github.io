@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>mousemove demo</title>
+  <style>
+  div {
+    width: 100%;
+    background: yellow;
+    border: 2px groove;
+    float: right;
+  }
+  p {
+    color: red;
+    width: 0;
+    float: left;
+    font-size: 14px;
+  }
+ 
+  </style>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<p>
+</p>
+<div> <canvas id="canvas" width="1400" height="600"></canvas></div>
+ 
+<script>
+$( "div" ).mousemove(function( event ) {
+  var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
+  var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
+  $( "span:first" ).text( "( event.pageX, event.pageY ) : " + pageCoords );
+  $( "span:last" ).text( "( event.clientX, event.clientY ) : " + clientCoords );
+    //get a reference to the canvas
+var ctx = $('#canvas')[0].getContext("2d");
+ 
+//draw a circle
+ctx.beginPath();
+ctx.arc(event.clientX, event.clientY, 10, 0, Math.PI*2, true); 
+ctx.closePath();
+ctx.fill();
+});
+</script>
+ 
+</body>
+</html>
