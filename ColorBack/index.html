@@ -2,21 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>mousemove demo</title>
+  <title>Move Your Mouse</title>
   <style>
   div {
     width: 100%;
-    background: yellow;
+    background: black;
     border: 2px groove;
     float: right;
   }
   p {
-    color: red;
+    color: black;
     width: 0;
     float: left;
     font-size: 14px;
   }
- 
+body{
+    background: black;   
+}
   </style>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script type="text/javascript">
@@ -27,14 +29,14 @@
         </script>
     </head>
     <body>
-        <form>Change the background color:
+        <form>
             <select name="backGround" size="1" onChange="updateTextColour(this.value)">
-                <option value="000000">[Black]</option>
-                <option value="FF0400">[Red]</option>
-                <option value="EFE800">[Yellow]</option>
-                <option value="05EF00">[Green]</option>
-                <option value="0206FF">[Blue]</option>
-                <option value="FFFFFF" selected>[White]</option>
+                <option value="000000" selected>Black</option>
+                <option value="FF0400">Red</option>
+                <option value="EFE800">Yellow</option>
+                <option value="05EF00">Green</option>
+                <option value="0206FF">Blue</option>
+                <option value="FFFFFF">White</option>
             </select>
         </form>
  
@@ -54,7 +56,7 @@ var ctx = $('#canvas')[0].getContext("2d");
 //draw a circle
 ctx.beginPath();
 ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
-ctx.arc(event.clientX, event.clientY, 10, 0, Math.PI*2, true); 
+ctx.arc(event.clientX-8, event.clientY-30, 10, 0, Math.PI*2, true); 
 ctx.closePath();
 ctx.fill();
 
