@@ -27,7 +27,7 @@ body{
                 document.body.style.backgroundColor =  value.substr(0,7);
                 $("#canvas").css("background-color", value.substr(0,7));
             }
-            
+            //
         </script>
     
     </head>
@@ -722,6 +722,22 @@ body{
 <option value=#FFFFFF>White</option>
             </select>
         </form>
+ <select name="Size" id ="Size" size="1">
+            <option value="1">1</option>
+<option value="5">5</option>
+<option value="10" selected>10</option>
+<option value="20">20</option>
+<option value="30">30</option>
+<option value="40">40</option>
+<option value="50">50</option>
+<option value="60">60</option>
+<option value="70">70</option>
+<option value="80">80</option>
+<option value="90">90</option>
+<option value="100">100</option>
+
+            </select>
+        </form>
  
 <p>
 </p>
@@ -733,6 +749,7 @@ body{
 $( "div" ).mousemove(function( event ) {
     
   var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
+    
   var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
   $( "span:first" ).text( "( event.pageX, event.pageY ) : " + pageCoords );
   $( "span:last" ).text( "( event.clientX, event.clientY ) : " + clientCoords );
@@ -746,9 +763,9 @@ ctx.beginPath();
     if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
     }
     else{
-     ctx.fillStyle = str;   
+        ctx.fillStyle = str;   
     }
-ctx.arc(event.clientX-8, event.clientY-30, 10, 0, Math.PI*2, true); 
+ctx.arc(event.clientX-8, event.clientY-70, $('#Size').val(), 0, Math.PI*2, true); 
 ctx.closePath();
 ctx.fill();
 
