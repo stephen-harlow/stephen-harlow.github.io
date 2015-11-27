@@ -775,7 +775,7 @@ ctx.beginPath();
         ctx.fillStyle = str;   
     }
     if($("#DRAW").html() == "YES"){
-        ctx.arc(event.clientX-8, event.clientY-70, $('#Size').val(), 0, Math.PI*2, true); 
+        ctx.arc(event.pageX-8, event.pageY-70, $('#Size').val(), 0, Math.PI*2, true); 
         ctx.closePath();
         ctx.fill();
     }
