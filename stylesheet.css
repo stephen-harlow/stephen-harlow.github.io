@@ -1,0 +1,31 @@
+.Project{
+    width: 300px;
+    float: left;
+    border: 2px solid black;
+    border-radius: 20px;
+    margin: 10px;
+}
+.Project h3{
+    text-align: center;
+    float: none;
+}
+.Project h4{
+    text-align: center;   
+}
+.Project p{
+    margin: 20px;
+}
+a {
+  transition: color .4s;
+  color: #265C83;
+}
+
+a:link,
+a:visited { color: #265C83; }
+a:hover   { color: #7FDBFF; }
+a:active  {
+  transition: color .3s;
+  color: #007BE6;
+}
+
+a { text-decoration: none; }
