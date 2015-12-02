@@ -18,9 +18,7 @@
             }
             body{
                 background: black;   
-                width:98%;
             }
-           
         </style>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript">
@@ -34,10 +32,8 @@
             }
             $(document).keydown(function(){
                 $("#DRAW").text("NO");
-
             });
             $(document).keyup(function(){
-
                 $("#DRAW").text("YES");
             });
             //
@@ -752,21 +748,17 @@
 
     <p>
     </p>
-    <div> <canvas id="canvas" style = "height = 900px; width = 1200 px;"></canvas></div>
+    <div> <canvas id="canvas" width="1400" height="600"></canvas></div>
 
     <script>
-
         $( "div" ).mousemove(function( event ) {
-
             var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
-
             var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
             //get a reference to the canvas
             var ctx = $('#canvas')[0].getContext("2d");
             //draw a circle
             ctx.beginPath();
             var str = $('#Circle').val();
-
             if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
                                }
             else{
