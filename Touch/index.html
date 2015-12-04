@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="/Touch/stylesheet.css">
 
         <script>
+            var cursorX;
+            var cursorY;
+            
             $( document ).ready(function() {
                 updateTextColour("#000000");
             }); 
@@ -25,7 +28,6 @@
             var canvas;
             var ctx;
             var lastPt = new Object();
-            var colours = ['red', 'green', 'blue', 'yellow', 'black'];
             var last = new Object();
 
             function init() {
@@ -52,7 +54,7 @@
                     ctx.beginPath();
                     var str = $('#Circle').val();
                     if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
-                    }
+                                       }
                     else{
                         ctx.fillStyle = str;   
                     }
@@ -780,7 +782,7 @@
 
             </select>
         </form>
-        <div class = "diver"><canvas id="mycanvas" style = "border: 2px solid black">
+        <div class = "diver"><canvas class="CANVER" id="mycanvas" style = "border: 2px solid black">
             Canvas element not supported.
             </canvas></div>
         <script>

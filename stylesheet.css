@@ -1,5 +1,6 @@
 .Project{
-    width: 300px;
+    min-width: 300px;
+    max-width: 350px;
     float: left;
     border: 2px solid black;
     border-radius: 20px;
@@ -28,6 +29,9 @@ a {
 #top{
     display: block;
     clear: both;
+    margin: 0px auto;
+    float: none;
+    align-content: center;
 }
 a:link,
 a:visited { color: #265C83; }
