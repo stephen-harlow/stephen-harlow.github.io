@@ -1,53 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-  <title>HTML5 multi-touch</title>
-  <script>
-    var canvas;
-    var ctx;
-    var lastPt = new Object();
-    var colours = ['red', 'green', 'blue', 'yellow', 'black'];
- 
-    function init() {
-      var touchzone = document.getElementById("mycanvas");
-      touchzone.addEventListener("touchmove", draw, false);
-      touchzone.addEventListener("touchend", end, false);   
-      canvas = document.getElementById('mycanvas');
-      ctx = canvas.getContext("2d");
-    }
- 
-    function draw(e) {
-      e.preventDefault();
- 
-      //Iterate over all touches
-      for(var i=0;i<e.touches.length;i++) {
-        var id = e.touches[i].identifier;   
-        if(lastPt[id]) {
-          ctx.beginPath();
-          ctx.moveTo(lastPt[id].x, lastPt[id].y);
-          ctx.lineTo(e.touches[i].pageX, e.touches[i].pageY);
-          ctx.strokeStyle = colours[id];
-          ctx.stroke();
- 
-        }
-        // Store last point
-        lastPt[id] = {x:e.touches[i].pageX, y:e.touches[i].pageY};
-      }
-  }
- 
-  function end(e) {
-    e.preventDefault();
-    for(var i=0;i<e.changedTouches.length;i++) {
-      var id = e.changedTouches[i].identifier;
-      // Terminate this touch
-      delete lastPt[id];
-    }
-  } 
-     </script>
-  </head>
-  <body onload="init()">
-    <canvas id="mycanvas" width="500" height="500">
-      Canvas element not supported.
-    </canvas>
-  </body>
+    <head>
+        <meta name="viewport" 
+              content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <title>HTML5 multi-touch</title>
+        <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <link rel="stylesheet" href="/Touch/stylesheet.css">
+
+        <script>
+            
+            var canvas;
+            var ctx;
+            var lastPt = new Object();
+            var colours = ['red', 'green', 'blue', 'yellow', 'black'];
+            var last = new Object();
+
+            function init() {
+                var touchzone = document.getElementById("mycanvas");
+
+                touchzone.addEventListener("touchmove", draw, false);
+                touchzone.addEventListener("onmousedown", draw);
+                touchzone.addEventListener("touchend", end, false);   
+                canvas = document.getElementById('mycanvas');
+                ctx = canvas.getContext("2d");
+                canvas.width = window.outerWidth-50;
+	           canvas.height = window.outerHeight-100;
+                
+
+            }
+
+            function draw(e) {
+
+                e.preventDefault();
+
+                //Iterate over all touches
+                for(var i=0;i<e.touches.length;i++) {
+                    var ctx = $('#mycanvas')[0].getContext("2d");
+                    ctx.beginPath();
+
+                    ctx.arc(e.touches[i].pageX, e.touches[i].pageY, 10, 0, Math.PI*2, true); 
+                    ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
+                    ctx.closePath();
+                    ctx.fill();  
+                resizeCanvas();
+
+                }
+
+            }
+
+            function end(e) {
+                e.preventDefault();
+                for(var i=0;i<e.changedTouches.length;i++) {
+                    var id = e.changedTouches[i].identifier;
+                    // Terminate this touch
+                    delete lastPt[id];
+                }
+            } 
+        </script>
+    </head>
+    <body onload="init()">
+        <div class = "diver"><canvas id="mycanvas" style = "border: 2px solid black">
+            Canvas element not supported.
+            </canvas></div>
+        <script>
+            var target = $('div.diver');
+
+            target.mousemove(function(e) {
+                var ctx = $('#mycanvas')[0].getContext("2d");
+                ctx.beginPath();
+
+                ctx.arc(e.pageX, e.pageY, 100, 0, Math.PI*2, true); 
+
+                ctx.closePath();
+                ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
+                ctx.fill();  
+
+            });
+
+            $('.trigger').click(function() {
+                var e = $.Event('mousemove');
+                e.pageX = parseInt($('.set-x').val());
+                e.pageY = parseInt($('.set-y').val());
+                target.trigger(e);
+            });
+            function writeMessage(canvas, message) {
+
+            }
+            function getMousePos(canvas, evt) {
+                var rect = canvas.getBoundingClientRect();
+                return {
+                    x: evt.clientX - rect.left,
+                    y: evt.clientY - rect.top
+                };
+            }
+            var canvas = document.getElementById('mycanvas');
+            var context = canvas.getContext('2d');
+
+
+        </script>
+    </body>
 </html>
