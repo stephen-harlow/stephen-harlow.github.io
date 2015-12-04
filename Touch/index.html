@@ -53,17 +53,13 @@
                     var ctx = $('#mycanvas')[0].getContext("2d");
                     ctx.beginPath();
                     var str = $('#Circle').val();
-
-                    var pos   = e.touches[i].offset();
-                    var elPos = { X:pos.left , Y:pos.top };
-                    var mPos  = { X:e.clientX-elPos.X, Y:e.clientY-elPos.Y };
                     if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);                   
                                        }
                     else{
                         ctx.fillStyle = str;   
                     }
                     if($("#DRAW").html() == "YES"){
-                        ctx.arc(mPos.x, mPos.Y, $('#Size').val(), 0, Math.PI*2, true); 
+                        ctx.arc(e.touches[i].pageX, e.touches[i].pageY, $('#Size').val(), 0, Math.PI*2, true); 
                         ctx.closePath();
                         ctx.fill();  
                     }
