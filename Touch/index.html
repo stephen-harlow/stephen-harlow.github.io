@@ -59,10 +59,8 @@
                         ctx.fillStyle = str;   
                     }
                     if($("#DRAW").html() == "YES"){
-                        //screenX
                         
                         ctx.arc(e.touches[i].clientX-25, e.touches[i].clientY-17, $('#Size').val(), 0, Math.PI*2, true); 
-                        ctx.arc(e.touches[i].screenX, e.touches[i].screenY, $('#Size').val(), 0, Math.PI*2, true); 
                         ctx.closePath();
                         ctx.fill();  
                     }
@@ -788,7 +786,6 @@
         <div class = "diver"><canvas class="CANVER" id="mycanvas" style = "border: 2px solid black">
             Canvas element not supported.
             </canvas></div>
-                <p id = "UNDER" style="background-color:white;">YES</p>
 
         <script>
             var target = $('div.diver');
@@ -806,7 +803,6 @@
                 else{
                     ctx.fillStyle = str;   
                 }
-                $("#UNDER").text(e.pageX + " : : " + e.clientX + " || " + e.screenX);
                 if($("#DRAW").html() == "YES"){
                     ctx.arc(mPos.X-10, mPos.Y, $('#Size').val(), 0, Math.PI*2, true); 
                     ctx.closePath();
