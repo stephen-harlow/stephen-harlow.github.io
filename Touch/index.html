@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta name="viewport" 
-              content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+
         <title>HTML5 multi-touch</title>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <link rel="stylesheet" href="/Touch/stylesheet.css">
@@ -76,7 +76,7 @@
         </script>
     </head>
     <body onload="init()">
-        <p id = "DRAW">YES</p>
+        <p hidden id = "DRAW">YES</p>
         <form>
             <select name="backGround" size="1" onChange="updateTextColour(this.value)">
                 <option value=#000000 selected>Black</option>
@@ -796,7 +796,7 @@
                     ctx.fillStyle = str;   
                 }
                 if($("#DRAW").html() == "YES"){
-                    ctx.arc(e.pageX-2, e.pageY-20, $('#Size').val(), 0, Math.PI*2, true); 
+                    ctx.arc(e.pageX-15, e.pageY-20, $('#Size').val(), 0, Math.PI*2, true); 
                     ctx.closePath();
                     ctx.fill();  
                 }
