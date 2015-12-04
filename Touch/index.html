@@ -34,7 +34,6 @@
                 var touchzone = document.getElementById("mycanvas");
 
                 touchzone.addEventListener("touchmove", draw, false);
-                touchzone.addEventListener("onmousedown", draw);
                 touchzone.addEventListener("touchend", end, false);   
                 canvas = document.getElementById('mycanvas');
                 ctx = canvas.getContext("2d");
@@ -53,8 +52,9 @@
                     var ctx = $('#mycanvas')[0].getContext("2d");
                     ctx.beginPath();
                     var str = $('#Circle').val();
-                    if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);                   
-                                       }
+                    if(str == "random"){         
+                        ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);                   
+                   }
                     else{
                         ctx.fillStyle = str;   
                     }
@@ -786,6 +786,8 @@
         <div class = "diver"><canvas class="CANVER" id="mycanvas" style = "border: 2px solid black">
             Canvas element not supported.
             </canvas></div>
+                <p id = "UNDER" style="background-color:white;">YES</p>
+
         <script>
             var target = $('div.diver');
 
@@ -795,12 +797,14 @@
                 var str = $('#Circle').val();
                 var pos   = $(this).offset();
                 var elPos = { X:pos.left , Y:pos.top };
-                var mPos  = { X:e.clientX-elPos.X, Y:e.clientY-elPos.Y };
-                if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
-                                   }
+                var mPos  = { X:e.clentX-elPos.X, Y:e.clientY-elPos.Y };
+                if(str == "random"){         
+                    ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
+                }
                 else{
                     ctx.fillStyle = str;   
                 }
+                $("#UNDER").text(e.pageX + " : : " + e.clientX + " || " + e.screenX);
                 if($("#DRAW").html() == "YES"){
                     ctx.arc(mPos.X-10, mPos.Y, $('#Size').val(), 0, Math.PI*2, true); 
                     ctx.closePath();
