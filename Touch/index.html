@@ -59,6 +59,10 @@
                         ctx.fillStyle = str;   
                     }
                     if($("#DRAW").html() == "YES"){
+                        curX = event.targetTouches[i].pageX;
+                        curY = event.targetTouches[i].pageY;
+                        event.targetTouches[i].target.style.webkitTransform =
+                            'translate(' + curX + 'px, ' + curY + 'px)';
                         ctx.arc(e.touches[i].clientX-25, e.touches[i].clientY-17, $('#Size').val(), 0, Math.PI*2, true); 
                         ctx.closePath();
                         ctx.fill();  
@@ -795,13 +799,15 @@
                 var pos   = $(this).offset();
                 var elPos = { X:pos.left , Y:pos.top };
                 var mPos  = { X:e.clientX-elPos.X, Y:e.clientY-elPos.Y };
-                if(str == "random"){         ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
-                                   }
+                if(str == "random"){         
+                    ctx.fillStyle='#'+Math.floor(Math.random()*16777215).toString(16);
+                                   
+                }
                 else{
                     ctx.fillStyle = str;   
                 }
                 if($("#DRAW").html() == "YES"){
-                    ctx.arc(mPos.X-10, mPos.Y, $('#Size').val(), 0, Math.PI*2, true); 
+                    ctx.arc(mPos.X-13, mPos.Y, $('#Size').val(), 0, Math.PI*2, true); 
                     ctx.closePath();
                     ctx.fill();  
                 }
