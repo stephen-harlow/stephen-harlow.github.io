@@ -19,7 +19,15 @@ a {
   transition: color .4s;
   color: #265C83;
 }
-
+#navlist li
+{
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+}
+#top{
+    display: inline-block;
+}
 a:link,
 a:visited { color: #265C83; }
 a:hover   { color: #7FDBFF; }
@@ -28,4 +36,4 @@ a:active  {
   color: #007BE6;
 }
 
-a { text-decoration: none; }
+a { text-decoration: none;font-size: medium; }

@@ -2,11 +2,13 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" 
+  content="width=device-width, initial-scale=1.0, user-scalable=no">
         <title>Move Your Mouse</title>
         <style>
             div {
-                width: 100%;
-                background: black;
+                            
+                background: white;
                 border: 2px groove;
                 float: right;
             }
@@ -19,6 +21,10 @@
             body{
                 background: black;   
             }
+            .canvas{
+                width: 100%;
+            }
+            
         </style>
         <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
         <script type="text/javascript">
@@ -748,9 +754,9 @@
 
     <p>
     </p>
-    <div> <canvas id="canvas" width="1100" height="500"></canvas></div>
+    <div> <canvas id="canvas"  height="500"></canvas></div>
 
-    <script>
+    <script>        
         $( "div" ).mousemove(function( event ) {
             var pageCoords = "( " + event.pageX + ", " + event.pageY + " )";
             var clientCoords = "( " + event.clientX + ", " + event.clientY + " )";
