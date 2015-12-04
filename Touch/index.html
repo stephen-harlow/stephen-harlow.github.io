@@ -59,8 +59,10 @@
                         ctx.fillStyle = str;   
                     }
                     if($("#DRAW").html() == "YES"){
+                        //screenX
                         
                         ctx.arc(e.touches[i].clientX-25, e.touches[i].clientY-17, $('#Size').val(), 0, Math.PI*2, true); 
+                        ctx.arc(e.touches[i].screenX, e.touches[i].screenY, $('#Size').val(), 0, Math.PI*2, true); 
                         ctx.closePath();
                         ctx.fill();  
                     }
