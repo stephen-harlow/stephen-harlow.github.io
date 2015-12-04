@@ -5,6 +5,8 @@ html, body, div { width:100%; height:100%; } /* just to be sure these are full s
 canvas{ 
     display:block;                 
     border: 2px groove;
+    min-height: 300px;
+    min-width: 300px;
 } /* To remove the scrollbars */
 p {
     color: black;
