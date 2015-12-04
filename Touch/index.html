@@ -59,7 +59,7 @@
                         ctx.fillStyle = str;   
                     }
                     if($("#DRAW").html() == "YES"){
-                        ctx.arc(e.touches[i].clientX, e.touches[i].clientY, $('#Size').val(), 0, Math.PI*2, true); 
+                        ctx.arc(e.touches[i].clientX-15, e.touches[i].clientY, $('#Size').val(), 0, Math.PI*2, true); 
                         ctx.closePath();
                         ctx.fill();  
                     }
