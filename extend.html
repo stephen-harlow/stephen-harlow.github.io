@@ -3,6 +3,8 @@
   <title>HackDFW Caeser Cipher Tool</title>
 </head>
 <body>
+  <p id="result" placeholder="email">
+
   <input id="key" placeholder="key">
   <input id="email" placeholder="email">
   <button id="dabutton">click me</button>
@@ -39,7 +41,7 @@ var caesarShift = function(str, amount) {
 };
   $("#dabutton").click(function(){
     for(var i=0;i<=26;i++){
-      $.post(("https://hdfw-tehgame.herokuapp.com/puzzle/caesar/"+$("#email").val()), {"answer":(caesarShift($("#key").val(), i))}, function(data,status,xhr){}, "json");
+      $.post(("https://hdfw-tehgame.herokuapp.com/puzzle/caesar/"+$("#email").val()), {"answer":(caesarShift($("#key").val(), i))}, function(data,status,xhr){$( ".result" ).html( data );}, "json");
     }
   });
 </script>
