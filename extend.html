@@ -54,7 +54,7 @@ var caesarShift = function(str, amount) {
 
   $("#dabutton").click(function(){
     for(var i=0;i<=26;i++){
-      $.post(("https://hdfw-tehgame.herokuapp.com/puzzle/caesar/"+$("#email").val()), {"answer":(caesarShift($("#key").val(), i))}, function(data,status,xhr){$("body").append(data + " " + (caesarShift($("#key").val(), i)))}, "json");
+      $.post(("https://hdfw-tehgame.herokuapp.com/puzzle/caesar/"+$("#email").val()), {"answer":(caesarShift($("#key").val(), i))}, function(data,status,xhr){$("body").append(data + " ")}, "json");
     }
   });
 
